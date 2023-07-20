@@ -1,0 +1,43 @@
+{{- $data_index := .Get "index" -}}
+{{- $docs := index $.Site.Data.settings "1.14.x" $data_index  -}}
+
+{{ range $docs }}
+    {{ range . }}
+        <p>{{ .group_description }}</p>
+        {{ range $setting_name, $value := . }}
+            {{ if reflect.IsSlice $value }}
+                {{ $prefix_setting := "settings.kubernetes" }}
+                {{ $full_setting := print $prefix_setting "." $setting_name }}
+                <h3 id="{{ $setting_name }}"><code>{{ $full_setting }}</code></h3>
+                {{ range . }}
+                    <p>{{ .description | markdownify }}</p>
+
+                    {{ if isset . "example" }}
+                        {{ range .example}}
+                            {{ $example_scratch := newScratch }}
+                            {{ $example := . }}
+                            {{ if isset $example "comment" }}
+                                {{ $example_scratch.Add "out" (print "# " $example.comment "\n") }}
+                            {{ end }}
+                            {{ if isset $example "multiline" }}
+                                {{ $example_scratch.Add "out" (print "[" $full_setting "]\n")}}
+                                {{ range $example.multiline }}
+                                    {{ range $multi_key, $multi_val := . }}
+                                        {{ $example_scratch.Add "out" (print $multi_key " = " $multi_val "\n") }}
+                                    {{ end }}
+                                {{ end }}
+                            {{ else }}
+                                {{ $example_scratch.Add "out" (print "[" $prefix_setting "]\n")}}
+                                {{ $example_scratch.Add "out" (print $setting_name " = " $example.value) }}
+                            {{ end }}
+                            
+                            {{ highlight ( $example_scratch.Get "out") "toml"}}
+
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        <hr />
+    {{ end }}
+{{ end }}

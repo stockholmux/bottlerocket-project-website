@@ -1,0 +1,46 @@
+[[group]]
+group_description = "Required settings to join any Kubernetes cluster."
+[[group.api-client]]
+description = "The cluster's Kubernetes API endpoint."
+[[group.cluster-certificate]]
+description = "The base64-encoded certificate authority of the cluster."
+
+[[group]]
+group_description = "Required settings for Kubernetes variants in AWS."
+[[group.cluster-name]]
+description = "The cluster name you chose during setup."
+
+[[group]]
+group_description = "Required settings for VMware Kubernetes variants."
+[[group.bootstrap-token]]
+description = "The token used for [TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/)."
+
+[[group]]
+group_description = "Optional settings to customize node labels and taints. Remember to quote keys (since they often contain \".\") and to quote all values."
+[[group.cluster-dns-ip]]
+description = """
+The IP of the DNS service running in the cluster. 
+
+This value can be set as a string containing a single IP address, or as a list containing multiple IP addresses.
+"""
+[[group.cluster-dns-ip.example]]
+comment = "Valid, single IP"
+value = "\"10.0.0.1\""
+[[group.cluster-dns-ip.example]]
+comment = "Also valid, multiple nameserver IPs"
+value = "[\"10.0.0.1\", \"10.0.0.2\"]"
+
+
+[[group.node-labels]]
+description = "[Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the form of key, value pairs added when registering the node in the cluster."
+[[group.node-labels.example]]
+[[group.node-labels.example.multiline]]
+"label1" = "foo"
+"label2" = "bar"
+[[group.node-taints]]
+description = "[Taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) in the form of key, values and effects entries added when registering the node in the cluster."
+[[group.node-taints.example]]
+comment = "some comment here"
+[[group.node-taints.example.multiline]]
+"dedicated" = '["experimental:PreferNoSchedule", "experimental:NoExecute"]'
+"special" = '["true:NoSchedule"]'
