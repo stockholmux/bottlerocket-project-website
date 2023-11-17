@@ -1,6 +1,5 @@
 name: generate-nvidia-driver-versions
 on: 
-  pull_request:
   workflow_dispatch:
     inputs:
       minorRelease:
