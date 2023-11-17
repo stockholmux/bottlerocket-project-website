@@ -1,5 +1,5 @@
 name: generate-nvidia-driver-versions
-on: 
+on:
   workflow_dispatch:
     inputs:
       minorRelease:
@@ -13,6 +13,7 @@ on:
       issueNumber:
         description: 'Github issue number to close (e.g. 139)'
         type: string
+
 permissions:
   contents: write
   pull-requests: write
@@ -38,7 +39,7 @@ jobs:
           PATCH_RELEASE: ${{ inputs.patchRelease }}
       - name: Generate nvidia version list
         run: |
-          bash bottlerocket-project-website/scripts/nvidia-driver-versions/get_cargos.sh bottlerocket/ > bottlerocket-project-website/data/nvidia/$PATCH_RELEASE/
+          bash bottlerocket-project-website/scripts/nvidia-driver-versions/get_cargos.sh bottlerocket/
         env:
           PATCH_RELEASE: ${{ inputs.patchRelease }}
       - name: Create gpu version page
