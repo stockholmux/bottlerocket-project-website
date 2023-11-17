@@ -13,7 +13,6 @@ on:
       issueNumber:
         description: 'Github issue number to close (e.g. 139)'
         type: string
-  pull_request:
 permissions:
   contents: write
   pull-requests: write
