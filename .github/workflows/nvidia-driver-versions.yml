@@ -44,7 +44,7 @@ jobs:
           PATCH_RELEASE: ${{ inputs.patchRelease }}
       - name: Create gpu version page
         run: |
-          bash bottlerocket-project-website/scripts/nvidia-driver-versions/create_markdown.sh  bottlerocket-project-website/content/content/en/os/$MINOR_RELEASE/version-information/gpu-drivers $PATCH_RELEASE
+          bash bottlerocket-project-website/scripts/nvidia-driver-versions/create_markdown.sh  bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/gpu-drivers $PATCH_RELEASE
         env:
           MINOR_RELEASE: ${{ inputs.minorRelease }}
           PATCH_RELEASE: ${{ inputs.patchRelease }}
