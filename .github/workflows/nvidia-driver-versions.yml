@@ -37,6 +37,8 @@ jobs:
         env:
           MINOR_RELEASE: ${{ inputs.minorRelease }}
           PATCH_RELEASE: ${{ inputs.patchRelease }}
+      - name: debug - show tree
+        run: tree .
       - name: Generate nvidia version list
         run: |
           export ACTION_ROOT_DIR=$PWD
