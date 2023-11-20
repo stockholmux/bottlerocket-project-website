@@ -41,7 +41,7 @@ jobs:
         run: |
           export ACTION_ROOT_DIR=$PWD
           pushd bottlerocket-project-website/scripts/nvidia-driver-versions
-          bash ./get_cargos.sh $ACTION_ROOT_DIR/bottlerocket bottlerocket-project-website/data/nvidia/$PATCH_RELEASE/
+          bash ./get_cargos.sh $ACTION_ROOT_DIR/bottlerocket $ACTION_ROOT_DIR/data/nvidia/$PATCH_RELEASE/
         env:
           PATCH_RELEASE: ${{ inputs.patchRelease }}
       - name: Create gpu version page
