@@ -54,7 +54,7 @@ jobs:
           path: bottlerocket-project-website
           commit-message: 'gpu: add NVIDIA drivers versions for v${{ inputs.patchRelease }}'
           branch: add-nvidia-versions-${{ inputs.patchRelease }}
-          title: 'gup: add NVIDIA versions for v${{ inputs.patchRelease }}'
+          title: 'GPUs: add NVIDIA versions for v${{ inputs.patchRelease }}'
           body: |
             **Issue number:**
 
